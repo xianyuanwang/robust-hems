@@ -1,0 +1,23 @@
+# HEMS AI Scheduling System Dependencies
+
+# Core dependencies
+numpy>=1.20.0
+
+# OR-Tools for MILP optimization
+ortools>=9.5.0
+
+# FastAPI and web server
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+
+# Testing dependencies
+pytest>=7.0.0
+httpx>=0.25.0  # For FastAPI TestClient
+
+# Optional: For exact MILP optimization with commercial solvers
+# pulp>=2.7.0          # Open-source LP/MILP solver interface
+# scipy>=1.7.0         # Scientific computing library
+
+# Optional: Visualization (for demos)
+# matplotlib>=3.5.0

@@ -1,0 +1,38 @@
+# Docker Compose for HEMS API Service
+
+version: '3.8'
+
+services:
+  hems-api:
+    build: .
+    container_name: hems-api
+    ports:
+      - "8000:8000"
+    environment:
+      - HEMS_HOST=0.0.0.0
+      - HEMS_PORT=8000
+      - HEMS_WORKERS=4
+      - HEMS_LOG_LEVEL=info
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    networks:
+      - hems-network
+    volumes:
+      - ./logs:/app/logs  # Optional: persist logs
+
+networks:
+  hems-network:
+    driver: bridge
