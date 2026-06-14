@@ -218,11 +218,18 @@ This installs:
 - `pytest>=7.0.0`: Testing framework
 - `httpx>=0.25.0`: Async HTTP client for testing
 
+4. Verify installation (optional):
+```bash
+python verify_setup.py
+```
+
+This will check that all dependencies are installed and modules can be imported correctly.
+
 ## ⚡ Quick Start
 
 ### Start API Server
 
-**Option 1: Using Startup Script**
+**Option 1: Using Startup Script (Recommended)**
 ```bash
 # Linux/Mac
 chmod +x start_api.sh
@@ -234,9 +241,16 @@ start_api.bat
 
 **Option 2: Direct Command**
 ```bash
+# From project root directory
 cd src
 python api_server.py
+
+# Or using uvicorn directly
+cd src
+uvicorn api_server:app --host 0.0.0.0 --port 8000 --workers 4
 ```
+
+**Important:** Make sure you run the server from the `src` directory, or use the startup scripts which handle this automatically.
 
 Server starts at `http://localhost:8000` with 4 worker processes.
 

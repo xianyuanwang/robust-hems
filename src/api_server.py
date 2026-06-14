@@ -23,8 +23,8 @@ from datetime import datetime
 from contextlib import asynccontextmanager
 import threading
 
-from src.milp_scheduler import MILPHEMSScheduler, create_milp_scheduler
-from src.hems_scheduler import HEMSScheduler, BatteryModel, create_example_scheduler
+from milp_scheduler import MILPHEMSScheduler, create_milp_scheduler
+from hems_scheduler import HEMSScheduler, BatteryModel, create_example_scheduler
 
 # Configure logging
 logging.basicConfig(
